@@ -47,6 +47,41 @@
 #     
 # </span>
 
+# In[ ]:
+
+
+'''
+<span style="font-family:High Tower Text"> 
+
+This is _question 0_ for <font color=red>problem set 1</font> of <font color=red>Stats 507</font>.
+    
+> <font size="4">Question 0 is about Markdown.</font>
+
+The next question is about the __Fibonnaci sequence__, Fn=Fn−2+Fn−1. In part __a__ we will define a Python function <code>fib_rec()</code>.
+
+Below is a …
+</span>
+
+### Level 3 Header
+<span style="font-family:High Tower Text"> 
+Next, we can make a bulleted list:
+
+- Item 1
+
+   - detail 1
+   - detail 2
+- Item 2
+
+Finally, we can make an enumerated list:
+
+1. Item 1
+2. Item 2
+3. Item 3
+    
+</span>
+'''
+
+
 # # GSI Comment #1:
 # -3 for not provide both raw and formatted versions.
 # 
@@ -65,6 +100,16 @@ from tabulate import tabulate
 
 
 def fib_rec(a,b,n):
+    """
+    This function generates the n-th element of the Fibonnaci sequence by a recursive method
+
+    n : integer (Index of the Fibonnaci sequence.)
+    a : integer (First element of the Fibonnaci sequence.)
+    b : integer (Second element of the Fibonnaci sequence.)
+
+    Returns an intiger which is the n-th element of the Fibonnaci sequence.
+
+    """
     if n < 0:
         print("Plese enter a positive integer")
     else:
@@ -86,6 +131,16 @@ fib_rec(0,1,25)
 
 
 def fib_for(a,b,n):
+    """
+    This function generates the n-th element of the Fibonnaci sequence using a for loop method
+
+    n : integer (Index of the Fibonnaci sequence.)
+    a : integer (First element of the Fibonnaci sequence.)
+    b : integer (Second element of the Fibonnaci sequence.)
+
+    Returns an intiger which is the n-th element of the Fibonnaci sequence.
+
+    """    
     if n < 0:
         print("Plese enter a positive integer")
     if n==0:
@@ -112,6 +167,16 @@ def fib_for(a,b,n):
 
 
 def fib_whl(a,b,n):
+    """
+    This function generates the n-th element of the Fibonnaci sequence using while loop method
+
+    n : integer (Index of the Fibonnaci sequence.)
+    a : integer (First element of the Fibonnaci sequence.)
+    b : integer (Second element of the Fibonnaci sequence.)
+
+    Returns an intiger which is the n-th element of the Fibonnaci sequence.
+
+    """    
     if n < 0:
         print("Plese enter a positive integer")
     if n==0:
@@ -140,6 +205,14 @@ def fib_whl(a,b,n):
 
 
 def fib_rnd(n):
+    """
+    This function generates the n-th element of the Fibonnaci sequence by rounding method
+
+    n : integer (Index of the Fibonnaci sequence.)
+
+    Returns an intiger which is the n-th element of the Fibonnaci sequence.
+
+    """    
     if n < 0:
         print("Plese enter a positive integer")
     return(round((1.6180339887**n)/(5**0.5)))
@@ -156,6 +229,14 @@ def fib_rnd(n):
 
 
 def fib_flr(n):
+    """
+    This function generates the n-th element of the Fibonnaci sequence by truncation method
+
+    n : integer (Index of the Fibonnaci sequence.)
+
+    Returns an intiger which is the n-th element of the Fibonnaci sequence.
+
+    """    
     if n < 0:
         print("Plese enter a positive integer")
     return(math.floor((1.6180339887**n+0.5)/(5**0.5)))
@@ -269,6 +350,13 @@ PascalsTriangleRow(3)
 
 
 def PascalsTriangleRow(n):
+    """
+    This function prints the first n rows of the pascal triangle.
+
+    n : integer (Number of pascal triangle rows.)
+
+    Returns None.
+    """    
     print((3*n)*" ",end='')
     print(1.0,end='')
     if n>0:
@@ -316,6 +404,22 @@ from scipy import stats
 # as EST[LVL%CI:(LWR,UPR)]
 
 def Q4A(Array, CL, Format) :
+    """
+    This function gnerates a confidence interval for the population mean based on the 
+    Normal theory
+
+    Array : ndarray (An array comprising the row data)
+    CL : float (confidence level.)
+    Format : string, optional (Specifies the printing format of the result. The default is 'string'.
+
+    Returns a string or a dictionary depending on providing the format or putting "None" instead, respectively.
+    In the dictionary:
+    est is the estimate
+    lwr is lower limit
+    upr is upper limit
+    level is confidence level
+
+    """    
     try:
         A=np.array(Array)
     except Exception:
@@ -376,6 +480,23 @@ Q4A(Array,95,None)["est"]
 # as EST[LVL%CI:(LWR,UPR)]
 
 def Q4bi(Array, CL, Format) :
+    """
+    This function gnerates a confidence interval for the population mean based on the 
+    Binomial Normal Approx
+
+
+    Array : ndarray (An array comprising the row data)
+    CL : float (confidence level.)
+    Format : string, optional (Specifies the printing format of the result. The default is 'string'.
+
+    Returns a string or a dictionary depending on providing the format or putting "None" instead, respectively.
+    In the dictionary:
+    est is the estimate
+    lwr is lower limit
+    upr is upper limit
+    level is confidence level
+
+    """    
     try:
         A=np.array(Array)
     except Exception:
@@ -432,6 +553,22 @@ from scipy.stats import beta
 # as EST[LVL%CI:(LWR,UPR)]
 
 def Q4bii(Array, CL, Format) :
+    """
+    This function gnerates a confidence interval for the population mean based on the 
+    Clopper-Pearson interval 
+
+    Array : ndarray (An array comprising the row data)
+    CL : float (confidence level.)
+    Format : string, optional (Specifies the printing format of the result. The default is 'string'.
+
+    Returns a string or a dictionary depending on providing the format or putting "None" instead, respectively.
+    In the dictionary:
+    est is the estimate
+    lwr is lower limit
+    upr is upper limit
+    level is confidence level
+
+    """     
     try:
         A=np.array(Array)
     except Exception:
@@ -481,6 +618,22 @@ Q4bii(Array,95,None)
 # as EST[LVL%CI:(LWR,UPR)]
 
 def Q4biii(Array, CL, Format) :
+    """
+    This function gnerates a confidence interval for the population mean based on the 
+    Jeffrey’s interval
+
+    Array : ndarray (An array comprising the row data)
+    CL : float (confidence level.)
+    Format : string, optional (Specifies the printing format of the result. The default is 'string'.
+
+    Returns a string or a dictionary depending on providing the format or putting "None" instead, respectively.
+    In the dictionary:
+    est is the estimate
+    lwr is lower limit
+    upr is upper limit
+    level is confidence level
+
+    """    
     try:
         A=np.array(Array)
     except Exception:
@@ -533,6 +686,22 @@ Q4biii(Array,95,None)
 # as EST[LVL%CI:(LWR,UPR)]
 
 def Q4biv(Array, CL, Format) :
+    """
+    This function gnerates a confidence interval for the population mean based on the 
+    Agresti-Coull interval 
+
+    Array : ndarray (An array comprising the row data)
+    CL : float (confidence level.)
+    Format : string, optional (Specifies the printing format of the result. The default is 'string'.
+
+    Returns a string or a dictionary depending on providing the format or putting "None" instead, respectively.
+    In the dictionary:
+    est is the estimate
+    lwr is lower limit
+    upr is upper limit
+    level is confidence level
+
+    """
     try:
         A=np.array(Array)
     except Exception:
