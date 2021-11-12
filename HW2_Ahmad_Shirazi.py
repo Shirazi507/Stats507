@@ -89,6 +89,16 @@ def creat_tuple(n,k,lw,hi):
 assert creat_tuple(1000,3,1,9)
 
 
+# In[11]:
+
+
+Test = creat_tuple(1000,3,1,9)
+# Test = Test + [1]
+assert isinstance(Test,list) == True, "Error"
+for t in Test:
+    assert isinstance(t, tuple) == True, "Error"
+
+
 # # GSI Comment #1:
 # -4 for incorrect usage of assertion; <br>
 # -1 the elements should not be sorted
