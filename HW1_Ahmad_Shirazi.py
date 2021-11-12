@@ -47,6 +47,10 @@
 #     
 # </span>
 
+# # GSI Comment #1:
+# -3 for not provide both raw and formatted versions.
+# 
+
 # In[3]:
 
 
@@ -235,6 +239,10 @@ print(tabulate(Time.tolist(), headers=["1st iter", "2nd iter","3rd iter","4th it
 #   For loop and while loop take significantly larger time than round and floor methods. <br>
 #   Medianwise, looks like Forloop takes less time than Whileloop and Floor takes less time than Round.
 
+# # GSI Comment #2:
+# -2 for not compare flr_rec <br>
+# -2 for not compare an increasingly large n.
+
 # # Answer to Question 2
 
 # In[16]:
@@ -280,6 +288,10 @@ def PascalsTriangleRow(n):
 
 
 PascalsTriangleRow(10)
+
+# 
+# # GSI Comment #3:
+# better to use integer than float
 
 
 # # Answer to Question 3
@@ -620,6 +632,12 @@ print(tabulate(ConfInt.tolist(), headers=["Methods", str(CL[0])+"% CI",str(CL[1]
 
 
 # - __Agresti-Coull interval is the narrowest and the most conservative for all three confidence levels.__
+
+# # GSI Comment #4:
+# -10 for no docstring
+
+# # GSI Comment #5:
+# Other suggestions: be consistent with spacing around assignment =
 
 # In[ ]:
 
