@@ -89,6 +89,10 @@ def creat_tuple(n,k,lw,hi):
 assert creat_tuple(1000,3,1,9)
 
 
+# # GSI Comment #1:
+# -4 for incorrect usage of assertion; <br>
+# -1 the elements should not be sorted
+
 # ## Q2
 # Since the function finds the tuples with the top 3rd element, it is called "tops".
 
@@ -309,5 +313,8 @@ str2='The number of cases in each of the cohorts 1 to 4 for \n oral health and d
 print(str2,num_cases2,', respectively')
 print('\n total number of cases for oral health and dentition data are:',sum_cases2)
 
+
+# # GSI Comment #2:
+#  -2 for some names are too long
 
 # 
