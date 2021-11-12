@@ -1,0 +1,101 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# ## HW2_Q3
+# 
+# __Note:__ in this question, cohorts 1 to 4 belong to the years 2011-2012, 2013-2014, 2015-2016 and 2017-2018, respectively. <br>
+# 
+# The code for first dataset is intentionally left to be different from the one for the second data set. It is showing the flow of my work. However, the code for the second datset (for_loop) is preferred due to using less variables.
+
+# In[1]:
+
+
+import numpy as np
+import pandas as pd
+from collections import defaultdict
+
+
+# In[2]:
+
+
+cols = ['SEQN','RIDAGEYR','RIDRETH3','DMDEDUC2','DMDMARTL','RIDSTATR', 'SDMVPSU', 'SDMVSTRA', 'WTMEC2YR', 'WTINT2YR']
+
+col_names=['unique ids','age','race and ethnicity','education','marital status',
+           'examination status','masked variance pseudo', 'masked variance pseudo-stratum','2 year MEC exam weight',
+           '2 year interview weight']
+
+df_1 = pd.read_sas(r'https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/DEMO_G.XPT')[cols]
+df_1.columns = col_names
+df_1 ["cohort"] = np.ones(len(df_1))
+df_1=df_1.convert_dtypes()
+
+df_2 = pd.read_sas(r'https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DEMO_H.XPT')[cols]
+df_2.columns = col_names
+df_2 ["cohort"] = np.ones(len(df_2))*2
+df_2=df_2.convert_dtypes()
+
+df_3 = pd.read_sas(r'https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/DEMO_I.XPT')[cols]
+df_3.columns = col_names
+df_3 ["cohort"] = np.ones(len(df_3))*3
+df_3=df_3.convert_dtypes()
+
+df_4 = pd.read_sas(r'https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.XPT')[cols]
+df_4.columns = col_names
+df_4 ["cohort"] = np.ones(len(df_4))*4
+df_4=df_4.convert_dtypes()
+
+
+# In[4]:
+
+
+df_1.to_pickle(r"D:\Stats 507\HW2_files\DEMO_G.pkl")
+df_2.to_pickle(r"D:\Stats 507\HW2_files\DEMO_H.pkl")
+df_3.to_pickle(r"D:\Stats 507\HW2_files\DEMO_I.pkl")
+df_4.to_pickle(r"D:\Stats 507\HW2_files\DEMO_J.pkl")
+
+
+# In[5]:
+
+
+num_cases1=[str(len(df_1)),str(len(df_2)),str(len(df_3)),str(len(df_4))]
+sum_cases1=len(df_1)+len(df_2)+len(df_3)+len(df_4)
+str1='The number of cases in each of the cohorts 1 to 4 for \n demographic data are:'
+print(str1,num_cases1,', respectively')
+print('\n total number of cases for demographic data are:',sum_cases1)
+
+
+# In[6]:
+
+
+cols=['OHX0'+str(i)+'TC' for i in range(1,10)]+['OHX'+str(i)+'TC' for i in range(10,33)]
+cols=cols+['OHX0'+str(i)+'CTC' for i in range(2,10)]+['OHX'+str(i)+'CTC' for i in range(10,32)]
+cols.remove('OHX16CTC')
+cols.remove('OHX17CTC')
+
+col_names=['tooth Count #'+str(i) for i in range(1,10)]+['tooth Count: #'+str(i) for i in range(10,33)]
+col_names=col_names+[
+    'coronal cavities #'+str(i) for i in range(2,10)]+['coronal cavities #'+str(i) for i in range(10,32)]
+
+col_names.remove('coronal cavities #16')
+col_names.remove('coronal cavities #17')
+
+files=['G','H','I','J']
+num_cases2=[]
+sum_cases2=0
+
+for i in range(1,5):
+    read_path=r'https://wwwn.cdc.gov/Nchs/Nhanes/'+str(2010+(2*i-1))+'-'+str(2010+2*i)+'/OHXDEN_'+files[i-1]+'.XPT'
+    df = pd.read_sas(read_path)[cols]
+    df.columns = col_names
+    df["cohort"] = np.ones(len(df))*i
+    df=df.convert_dtypes()
+    num_cases2.append(len(df))
+    sum_cases2=sum_cases2+len(df)
+    save_path=r"D:\Stats 507\HW2_files\OHXDEN_"+files[i-1]+".pkl"
+    df.to_pickle(save_path)
+str2='The number of cases in each of the cohorts 1 to 4 for \n oral health and dentition data are:'
+print(str2,num_cases2,', respectively')
+print('\n total number of cases for oral health and dentition data are:',sum_cases2)
+
+
+# 
