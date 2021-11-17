@@ -30,6 +30,7 @@
 import pandas as pd
 from glob import glob
 
+# - Here we learn how to use glob module to create a data frame from multiple files, row wise. <br>
 # - We can read each dataframe from its own CSV file, combine them together and delet the original dataframes. <br>
 # - This will need a lot of code and will be memory and time consuming.<br>
 # - A better solution is to use the built in glob module.<br>
